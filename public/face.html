@@ -29,7 +29,7 @@ body {
   float:left;
 	width: 640px;
 	height: 480px;
-	-webkit-transform: scale(-1, 1);
+	/*-webkit-transform: scale(-1, 1);*/
 }
 
 #photo {
@@ -37,7 +37,7 @@ body {
 	width: 640px;
 	height: 480px;
 	margin: 0 auto;
-	-webkit-transform: scale(-1, 1);
+	/*-webkit-transform: scale(-1, 1);*/
 }
 
 .controls {
@@ -187,21 +187,23 @@ function changeMoustache(value) {
 
 var video = document.getElementById('output');
 var photo = document.getElementById('photo');
+var context;
 
 function takePhoto() {
 
   photo.width = video.width;
   photo.height = video.height;
 
-  var context = photo.getContext('2d');
+  context = photo.getContext('2d');
   context.drawImage(video, 0, 0, photo.width, photo.height);
+  
   
   var saveButton = document.getElementById('save');
   saveButton.disabled = false;
 }
 
 function savePhoto() {
-  photo.toBlob(function(blob) {
+  video.toBlob(function(blob) {
       saveAs(blob, "Photo.png");
   });
 }
