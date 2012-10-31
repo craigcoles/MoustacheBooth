@@ -215,7 +215,7 @@ function savePhoto() {
   if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} today = mm+'-'+dd+'-'+yyyy+'_'+hour+'-'+min;
   
   photo.toBlob(function(blob) {
-      saveAs(blob, "Photo.png");
+      saveAs(blob, "Photo_"+today+".png");
   });
 }
 
