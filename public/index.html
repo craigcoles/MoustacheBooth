@@ -1,79 +1,89 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<!-- Adapted to work with the getUserMedia API using code from http://wesbos.com/html5-video-face-detection-canvas-javascript/ -->
-	<head>
-		<meta charset="utf-8">
-		<title>Moustache Booth | For the follicly challenged...</title>
+  <head>
+    <meta charset="utf-8">
+    <title>Moustache Booth | For the follicly challenged...</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <!-- STYLES -->
-		<link href="/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
-		<link href="/css/bootstrap-responsive.min.css" media="screen" rel="stylesheet" type="text/css">
-		<link href="/css/custom.css" media="screen" rel="stylesheet" type="text/css">
-
-	</head>
-	<body>
-	  <p id="info" class="alert alert-error">Please allow access to your camera!</p>
     
-<div class="container-fluid">
+    <!-- STYLES -->
+    <link href="/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/css/bootstrap-responsive.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/css/custom.css" media="screen" rel="stylesheet" type="text/css">
+    
+  </head>
+  <body>
+    
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    
+    
+<div class="container">
   
-  <div class="row-fluid masthead" id="masthead">
-    <h1 class="pull-left">Moustache Booth</h1>
-    <ul class="nav nav-pills pull-right">
-      <li class="active"><a href="#photobooth">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#who">Who</a></li>
-      <li><a href="#who">Contact</a></li>
-    </ul>
+  <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+      <a class="brand" href="#">Moustache Booth</a>
+      <ul class="nav">
+      </ul>
+    </div>
   </div>
   
-  <div class="row-fluid photobooth clearfix" id="photobooth">
+  <p id="info" class="alert alert-error">Please allow access to your camera!</p>
+  
+  
+  
+  <div class="row photobooth clearfix" id="photobooth">
     <div class="span6 clearfix">
-      <canvas id="output" class="pull-right"></canvas>
+      <canvas id="output" class="pull-right img-polaroid"></canvas>
       <button class="btn btn-large btn-success pull-right" id="take" onClick="takePhoto()">Take Photo</button>
     </div>
     <div class="span6 clearfix">
-      <canvas id="photo" width></canvas>
+      <canvas id="photo" class="pull-left img-polaroid" width></canvas>
       <button class="btn btn-large btn-success pull-left" id="save" disabled="disabled" onClick="savePhoto()">Save picture</button>
     </div>
-    <div class="row-fluid clearfix">
+    <div class="row clearfix">
       <div class="span12">
-        <button class="btn btn-danger" id="no-moustache" onClick="changeMoustache(6)">Remove Tash</button>
         <button class="btn" id="moustache-0" onClick="changeMoustache(0)">Handlebars</button>
         <button class="btn" id="moustache-1" onClick="changeMoustache(1)">Moustache 1</button>
         <button class="btn" id="moustache-2" onClick="changeMoustache(2)">Moustache 2</button>
         <button class="btn" id="moustache-3" onClick="changeMoustache(3)">Moustache 3</button>
         <button class="btn" id="moustache-4" onClick="changeMoustache(4)">Moustache 4</button>
         <button class="btn" id="moustache-5" onClick="changeMoustache(5)">Hitler</button>
+        <button class="btn btn-danger" id="no-moustache" onClick="changeMoustache(6)">Remove Tash</button>
         <!-- <button class="btn bt" id="delete" disabled="disabled" onClick="deletePhoto()">Delete picture</button> -->
       </div>
     </div>
   </div>
   
-  <div class="row-fluid about" id="about">
-    <div class="span6">
+  <div class="row about" id="about">
+    <div class="span4 offset1">
       <h2>What the Duce‽</h2>
-      <p class="lead">Are you a baby faced youth? A Lady? Lack the natural ability to grow one mean looking moustache? We're here to help.</p>
-      <p>Using this clever little web application, you two can look as refined as our victorian ancestors.</p>
+      <p class="lead">Are you a baby faced youth? A Lady? Lack the natural ability to grow a nose neighbout? Fear not, we're here to help.</p>
+      <p>Using this clever little web application, you too can look as refined as our victorian ancestors. Simpily allow access to your web camera obscurea, and your image will be transferd to our digital mirror! Then simperly select the face furniture that best suits your face and take say cheese. You can they save the photograph to your personal computer, and upload it to the intertubes. Gadzooks! </p>
     </div>
-    <div class="span6">
+    <div class="span4 offset2">
       <h2>How it's Done</h2>
       <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
   </div>
   
-  <div class="row-fluid who" id="who">
-    <div class="span6">
+  <div class="row who" id="who">
+    <div class="span4 offset1">
       <h2>Who Made This?</h2>
-      <p class="lead">This here wep application was put together by the turn of the century engineers at <a href="http://www.wearebeef.co.uk" title="Beef">Beef</a>.</p>
-      <p>Using this clever little web application, you two can look as refined as our victorian ancestors.</p>
+      <p class="lead">This here web application was put together by the turn of the century engineers at <a href="http://www.wearebeef.co.uk" title="Beef">Beef</a>.</p>
+      <p></p>
     </div>
-    <div class="span6">
+    <div class="span4 offset2">
       <h2>Get in Touch</h2>
       <p class="lead">Like what you see? We can build fun stuff like this for you too!</p>
       <p>Don't be afraid to send one of these new fangled e-mails, give us a bell on the Graham-Bell's telephone, or just pop in for High Tea (and biccies)</p>
@@ -100,22 +110,20 @@
   
 <div class="footer">
   <p class="pull-left">©Beef 2012</p>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" class="pull-right">Tweet</a>
+  <div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial" class="pull-right"></div>
 </div>
-
-
-
-
 
 
 </div> <!-- eo:container-fluid -->
   
-		<script src="/js/ccv.js"></script>
-		<script src="/js/face.js"></script>
-		<script src="/js/filesaver-min.js"></script>
-		<script src="/js/canvas-to-blob-min.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		
-		<script>
+  <script src="/js/ccv.js"></script>
+  <script src="/js/face.js"></script>
+  <script src="/js/filesaver-min.js"></script>
+  <script src="/js/canvas-to-blob-min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+
+  <script>
 
 // requestAnimationFrame shim
 (function() {
@@ -234,13 +242,16 @@ var video = document.getElementById('output');
 var photo = document.getElementById('photo');
 var context;
 
-var timestamp = new Date();
-var dd = timestamp.getDate();
-var mm = timestamp.getMonth()+1;
-var hour = timestamp.getHours();
-var min = timestamp.getMinutes();
+
 
 function takePhoto() {
+  
+  var timestamp = new Date();
+  var dd = timestamp.getDate();
+  var mm = timestamp.getMonth()+1;
+  var hour = timestamp.getHours();
+  var min = timestamp.getMinutes();
+  
   photo.width = video.width;
   photo.height = video.height;
   
@@ -296,6 +307,9 @@ App.init = function() {
 
 App.init();
 
-		</script>
-	</body>
+    </script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    
+    
+  </body>
 </html>

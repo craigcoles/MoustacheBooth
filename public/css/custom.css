@@ -1,3 +1,8 @@
+body{
+  background: #999;
+  padding-top: 20px;
+}
+
 /*Alert*/
 .alert {
   margin: 20px auto;
@@ -14,16 +19,9 @@
   width: 640px;
   height: 480px;
   margin: 0 0 20px 0;
-  border: solid 1px red;
 }
 
-/*Rows*/
-.photobooth, .about, .who, .masthead{
-  width: 1280px;
-  margin: 0 auto;
-}
-
-.photobooth .row-fluid .span12{
+.photobooth .row .span12{
   padding: 20px 0;
   text-align: center;
 }
