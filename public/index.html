@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!-- Adapted to work with the getUserMedia API using code from http://wesbos.com/html5-video-face-detection-canvas-javascript/ -->
+	<head>
+		<meta charset="utf-8">
+		<title>Moustache Booth | For the follicly challenged...</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- STYLES -->
+		<link href="/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+		<link href="/css/bootstrap-responsive.min.css" media="screen" rel="stylesheet" type="text/css">
+		<link href="/css/custom.css" media="screen" rel="stylesheet" type="text/css">
+
+	</head>
+	<body>
+	  <p id="info" class="alert alert-error">Please allow access to your camera!</p>
+    
+<div class="container-fluid">
+  
+  <div class="row-fluid masthead" id="masthead">
+    <h1 class="pull-left">Moustache Booth</h1>
+    <ul class="nav nav-pills pull-right">
+      <li class="active"><a href="#photobooth">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#who">Who</a></li>
+      <li><a href="#who">Contact</a></li>
+    </ul>
+  </div>
+  
+  <div class="row-fluid photobooth clearfix" id="photobooth">
+    <div class="span6 clearfix">
+      <canvas id="output" class="pull-right"></canvas>
+      <button class="btn btn-large btn-success pull-right" id="take" onClick="takePhoto()">Take Photo</button>
+    </div>
+    <div class="span6 clearfix">
+      <canvas id="photo" width></canvas>
+      <button class="btn btn-large btn-success pull-left" id="save" disabled="disabled" onClick="savePhoto()">Save picture</button>
+    </div>
+    <div class="row-fluid clearfix">
+      <div class="span12">
+        <button class="btn btn-danger" id="no-moustache" onClick="changeMoustache(6)">Remove Tash</button>
+        <button class="btn" id="moustache-0" onClick="changeMoustache(0)">Handlebars</button>
+        <button class="btn" id="moustache-1" onClick="changeMoustache(1)">Moustache 1</button>
+        <button class="btn" id="moustache-2" onClick="changeMoustache(2)">Moustache 2</button>
+        <button class="btn" id="moustache-3" onClick="changeMoustache(3)">Moustache 3</button>
+        <button class="btn" id="moustache-4" onClick="changeMoustache(4)">Moustache 4</button>
+        <button class="btn" id="moustache-5" onClick="changeMoustache(5)">Hitler</button>
+        <!-- <button class="btn bt" id="delete" disabled="disabled" onClick="deletePhoto()">Delete picture</button> -->
+      </div>
+    </div>
+  </div>
+  
+  <div class="row-fluid about" id="about">
+    <div class="span6">
+      <h2>What the Duce‽</h2>
+      <p class="lead">Are you a baby faced youth? A Lady? Lack the natural ability to grow one mean looking moustache? We're here to help.</p>
+      <p>Using this clever little web application, you two can look as refined as our victorian ancestors.</p>
+    </div>
+    <div class="span6">
+      <h2>How it's Done</h2>
+      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+  </div>
+  
+  <div class="row-fluid who" id="who">
+    <div class="span6">
+      <h2>Who Made This?</h2>
+      <p class="lead">This here wep application was put together by the turn of the century engineers at <a href="http://www.wearebeef.co.uk" title="Beef">Beef</a>.</p>
+      <p>Using this clever little web application, you two can look as refined as our victorian ancestors.</p>
+    </div>
+    <div class="span6">
+      <h2>Get in Touch</h2>
+      <p class="lead">Like what you see? We can build fun stuff like this for you too!</p>
+      <p>Don't be afraid to send one of these new fangled e-mails, give us a bell on the Graham-Bell's telephone, or just pop in for High Tea (and biccies)</p>
+      <div class="row-fluid">
+        <div class="span6">
+          <address>
+            <strong>Beef, Inc.</strong><br>
+            Unit 1.10<br>
+            Paintworks,<br>
+            Bristol<br>
+            BS4 3EH<br>
+          </address>
+        </div>
+        <div class="span6">
+          <address>
+            <a href="mailto:#">hello@wearebeef.co.uk</a><br />
+            0117 971 1150
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+<div class="footer">
+  <p class="pull-left">©Beef 2012</p>
+</div>
+
+
+
+
+
+
+</div> <!-- eo:container-fluid -->
+  
+		<script src="/js/ccv.js"></script>
+		<script src="/js/face.js"></script>
+		<script src="/js/filesaver-min.js"></script>
+		<script src="/js/canvas-to-blob-min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		
+		<script>
+
+// requestAnimationFrame shim
+(function() {
+	var i = 0,
+		lastTime = 0,
+		vendors = ['ms', 'moz', 'webkit', 'o'];
+	
+	while (i < vendors.length && !window.requestAnimationFrame) {
+		window.requestAnimationFrame = window[vendors[i] + 'RequestAnimationFrame'];
+		i++;
+	}
+	
+	if (!window.requestAnimationFrame) {
+		window.requestAnimationFrame = function(callback, element) {
+			var currTime = new Date().getTime(),
+				timeToCall = Math.max(0, 1000 / 60 - currTime + lastTime),
+				id = setTimeout(function() { callback(currTime + timeToCall); }, timeToCall);
+			
+			lastTime = currTime + timeToCall;
+			return id;
+		};
+	}
+}());
+
+var App = {
+	start: function(stream) {
+		App.video.addEventListener('canplay', function() {
+			App.video.removeEventListener('canplay');
+			setTimeout(function() {
+				App.video.play();
+				App.canvas.style.display = 'block';
+				App.info.style.display = 'none';
+				App.canvas.width = App.video.videoWidth;
+				App.canvas.height = App.video.videoHeight;
+				App.backCanvas.width = App.video.videoWidth / 4;
+				App.backCanvas.height = App.video.videoHeight / 4;
+				App.backContext = App.backCanvas.getContext('2d');
+
+				App.context.translate(App.canvas.width, 0);
+				App.context.scale(-1, 1);
+			
+				var w = 300 / 4 * 0.8,
+					h = 270 / 4 * 0.8;
+			
+				App.comp = [{
+					x: (App.video.videoWidth / 4 - w) / 2,
+					y: (App.video.videoHeight / 4 - h) / 2,
+					width: w, 
+					height: h,
+				}];
+			
+				App.drawToCanvas();
+			}, 500);
+		}, true);
+		
+		var domURL = window.URL || window.webkitURL;
+		App.video.src = domURL ? domURL.createObjectURL(stream) : stream;
+	},
+	denied: function() {
+		App.info.innerHTML = 'Camera access denied!<br>Please reload and try again.';
+	},
+	error: function(e) {
+		if (e) {
+			console.error(e);
+		}
+		App.info.innerHTML = 'Please go to about:flags in Google Chrome and enable the &quot;MediaStream&quot; flag.';
+	},
+	drawToCanvas: function() {
+		requestAnimationFrame(App.drawToCanvas);
+		
+		var video = App.video,
+			ctx = App.context,
+			backCtx = App.backContext,
+			m = 4,
+			w = 4,
+			i,
+			comp;
+
+		ctx.drawImage(video, 0, 0, App.canvas.width, App.canvas.height);
+		backCtx.drawImage(video, 0, 0, App.backCanvas.width, App.backCanvas.height);
+		
+		comp = ccv.detect_objects(App.ccv = App.ccv || {
+			canvas: App.backCanvas,
+			cascade: cascade,
+			interval: 4,
+			min_neighbors: 1
+		});
+		
+		if (comp.length) {
+			App.comp = comp;
+		}
+		
+		for (i = App.comp.length; i--; ) {
+			ctx.drawImage(App.glasses, (App.comp[i].x - w / 2) * m, (App.comp[i].y - w / 2) * m, (App.comp[i].width + w) * m, (App.comp[i].height + w) * m);
+		}
+	}
+};
+
+var moustache = [];
+moustache[0] = "0.png"
+moustache[1] = "1.png"
+moustache[2] = "2.png"
+moustache[3] = "3.png"
+moustache[4] = "4.png"
+moustache[5] = "5.png"
+moustache[6] = "no-tash.png"
+
+App.glasses = new Image();
+App.glasses.src = "moustaches/" + moustache[0]
+
+function changeMoustache(value) {
+  App.glasses.src = "moustaches/" + moustache[value];
+}
+
+var video = document.getElementById('output');
+var photo = document.getElementById('photo');
+var context;
+
+var timestamp = new Date();
+var dd = timestamp.getDate();
+var mm = timestamp.getMonth()+1;
+var hour = timestamp.getHours();
+var min = timestamp.getMinutes();
+
+function takePhoto() {
+  photo.width = video.width;
+  photo.height = video.height;
+  
+  context = photo.getContext('2d');
+  context.drawImage(video, 0, 0, photo.width, photo.height);
+  
+  var saveButton = document.getElementById('save');
+  var delButton = document.getElementById('delete');
+  saveButton.disabled = false;
+  delButton.disabled = false;
+}
+
+function savePhoto() {
+  var yyyy = timestamp.getFullYear();
+  if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} timestamp = mm+'-'+dd+'-'+yyyy+'_'+hour+'-'+min;
+  
+  photo.toBlob(function(blob) {
+      saveAs(blob, "Photo_"+timestamp+".png");
+  });
+}
+
+function deletePhoto() {
+  context.clearRect(0, 0, photo.width, photo.height);
+}
+
+App.init = function() {
+	App.video = document.createElement('video');
+	App.backCanvas = document.createElement('canvas');
+	App.canvas = document.querySelector('#output');
+	App.canvas.style.display = 'none';
+	App.context = App.canvas.getContext('2d');
+
+	App.info = document.querySelector('#info');
+	
+	navigator.getUserMedia_ = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+	
+	try {
+		navigator.getUserMedia_({
+			video: true,
+			audio: false
+		}, App.start, App.denied);
+	} catch (e) {
+		try {
+			navigator.getUserMedia_('video', App.start, App.denied);
+		} catch (e) {
+			App.error(e);
+		}
+	}
+	
+	App.video.loop = App.video.muted = true;
+	App.video.load();
+};
+
+App.init();
+
+		</script>
+	</body>
+</html>
