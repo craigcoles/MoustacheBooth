@@ -51,6 +51,7 @@ body {
 		</style>
 	</head>
 	<body>
+	  
 		<p id="info">Please allow access to your camera!</p>
 		
 		<div class="photo-booth">
@@ -61,18 +62,23 @@ body {
 		<div class="controls">
 		  <button id="take" onClick="takePhoto()">Take picture</button>
   		<button id="save" disabled="disabled" onClick="savePhoto()">Save picture</button>
-      <button id="moustache-0" onClick="changeMoustache(0)">moustache 0</button>
-      <button id="moustache-1" onClick="changeMoustache(1)">moustache 1</button>
-      <button id="moustache-2" onClick="changeMoustache(2)">moustache 2</button>
-      <button id="moustache-3" onClick="changeMoustache(3)">moustache 3</button>
-      <button id="moustache-4" onClick="changeMoustache(4)">moustache 4</button>
-      <button id="moustache-5" onClick="changeMoustache(5)">moustache 5</button>
+  		<button id="delete" disabled="disabled" onClick="deletePhoto()">Delete picture</button>
+		</div>
+		
+		<div class="controls">
+		  <button id="no-moustache" onClick="changeMoustache(6)">Remove Tash</button>
+      <button id="moustache-0" onClick="changeMoustache(0)">Handlebars</button>
+      <button id="moustache-1" onClick="changeMoustache(1)">Moustache 1</button>
+      <button id="moustache-2" onClick="changeMoustache(2)">Moustache 2</button>
+      <button id="moustache-3" onClick="changeMoustache(3)">Moustache 3</button>
+      <button id="moustache-4" onClick="changeMoustache(4)">Moustache 4</button>
+      <button id="moustache-5" onClick="changeMoustache(5)">Hitler</button>
     </div>
     
 		<script src="js/ccv.js"></script>
 		<script src="js/face.js"></script>
-		<script src="js/filesaver.js"></script>
-		<script src="js/canvas-to-blob.js"></script>
+		<script src="js/filesaver-min.js"></script>
+		<script src="js/canvas-to-blob-min.js"></script>
 		<script>
 
 // requestAnimationFrame shim
@@ -179,6 +185,7 @@ moustache[2] = "2.png"
 moustache[3] = "3.png"
 moustache[4] = "4.png"
 moustache[5] = "5.png"
+moustache[6] = "no-tash.png"
 
 App.glasses = new Image();
 App.glasses.src = "moustaches/" + moustache[0]
@@ -191,32 +198,36 @@ var video = document.getElementById('output');
 var photo = document.getElementById('photo');
 var context;
 
-function takePhoto() {
+var timestamp = new Date();
+var dd = timestamp.getDate();
+var mm = timestamp.getMonth()+1;
+var hour = timestamp.getHours();
+var min = timestamp.getMinutes();
 
+function takePhoto() {
   photo.width = video.width;
   photo.height = video.height;
-
+  
   context = photo.getContext('2d');
   context.drawImage(video, 0, 0, photo.width, photo.height);
   
-  
   var saveButton = document.getElementById('save');
+  var delButton = document.getElementById('delete');
   saveButton.disabled = false;
+  delButton.disabled = false;
 }
 
 function savePhoto() {
-  var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth()+1;
-  var hour = today.getHours();
-  var min = today.getMinutes();
-
-  var yyyy = today.getFullYear();
-  if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} today = mm+'-'+dd+'-'+yyyy+'_'+hour+'-'+min;
+  var yyyy = timestamp.getFullYear();
+  if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} timestamp = mm+'-'+dd+'-'+yyyy+'_'+hour+'-'+min;
   
   photo.toBlob(function(blob) {
-      saveAs(blob, "Photo_"+today+".png");
+      saveAs(blob, "Photo_"+timestamp+".png");
   });
+}
+
+function deletePhoto() {
+  context.clearRect(0, 0, photo.width, photo.height);
 }
 
 App.init = function() {
@@ -250,5 +261,6 @@ App.init = function() {
 App.init();
 
 		</script>
+		<script src="js/bootstrap.js"></script>
 	</body>
 </html>
