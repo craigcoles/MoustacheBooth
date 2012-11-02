@@ -13,6 +13,16 @@ body{
   width: 640px;
 }
 
+/*Controls*/
+#controls div{
+  text-align:center;
+  padding: 0 0 20px 0;
+}
+
+#controls div .btn{
+  display: inline-block;
+}
+
 /*Canavses*/
 #output, #photo  {
   width: 640px;
@@ -23,20 +33,10 @@ body{
   left: 160px;
 }
 
-/*#photo, #save, #another{display:none;}
-*/
+#photo, #controls div .btn#save, #controls div .btn#another{display:none;}
+
 
 #photobooth{
   position: relative;
   height: 510px;
-}
-
-
-.photobooth .row .span12{
-  padding: 20px 0;
-  text-align: center;
-}
-
-.photobooth .row .span12 .btn{
-  margin-bottom: 20px;
 }

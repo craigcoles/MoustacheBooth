@@ -96,24 +96,24 @@ var App = {
 };
 
 var moustache = [];
-moustache[0] = "0.png"
-moustache[1] = "1.png"
-moustache[2] = "2.png"
-moustache[3] = "3.png"
-moustache[4] = "4.png"
-moustache[5] = "5.png"
-moustache[6] = "6.png"
-moustache[7] = "7.png"
-moustache[8] = "8.png"
-moustache[9] = "9.png"
-moustache[10] = "10.png"
-moustache[11] = "11.png"
-moustache[12] = "12.png"
-moustache[13] = "13.png"
-moustache[14] = "14.png"
-moustache[15] = "15.png"
-moustache[16] = "16.png"
-moustache[17] = "no-tash.png"
+moustache[0] = "0.png";
+moustache[1] = "1.png";
+moustache[2] = "2.png";
+moustache[3] = "3.png";
+moustache[4] = "4.png";
+moustache[5] = "5.png";
+moustache[6] = "6.png";
+moustache[7] = "7.png";
+moustache[8] = "8.png";
+moustache[9] = "9.png";
+moustache[10] = "10.png";
+moustache[11] = "11.png";
+moustache[12] = "12.png";
+moustache[13] = "13.png";
+moustache[14] = "14.png";
+moustache[15] = "15.png";
+moustache[16] = "16.png";
+moustache[17] = "no-tash.png";
 
 App.glasses = new Image();
 App.glasses.src = "moustaches/" + moustache[0]
@@ -144,11 +144,11 @@ function takePhoto() {
   
   saveButton.disabled = false;
                                         
-  photo.show();
-  video.hide();
-  takeButton.hide();
-  saveButton.show(); 
-  anotherButton.show();                               
+  photo.style.display = 'inline-block';
+  video.style.display = 'none';
+  takeButton.style.display = 'none';
+  saveButton.style.display = 'inline-block';
+  anotherButton.style.display = 'inline-block';                        
                                 
 }
 
@@ -169,12 +169,11 @@ function savePhoto() {
 }
 
 function takeAnother() {
-  // photo.hide();
-  // video.show();
-  // takeButton.show();
-  // saveButton.hide(); 
-  // anotherButton.hide();
-
+  photo.style.display = 'none';
+  video.style.display = 'inline-block';
+  takeButton.style.display = 'inline-block';
+  saveButton.style.display = 'none';
+  anotherButton.style.display = 'none';
 }
 
 function deletePhoto() {
