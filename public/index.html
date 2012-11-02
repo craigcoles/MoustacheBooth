@@ -16,17 +16,7 @@
     
   </head>
   <body>
-    
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-    
-    
+        
 <div class="container">
   
   <div class="navbar navbar-inverse">
@@ -39,39 +29,54 @@
   
   <p id="info" class="alert alert-error">Please allow access to your camera!</p>
   
-  
-  
-  <div class="row photobooth clearfix" id="photobooth">
-    <div class="span6 clearfix">
-      <canvas id="output" class="pull-right img-polaroid"></canvas>
-      <button class="btn btn-large btn-success pull-right" id="take" onClick="takePhoto()">Take Photo</button>
-    </div>
-    <div class="span6 clearfix">
-      <canvas id="photo" class="pull-left img-polaroid" width></canvas>
-      <button class="btn btn-large btn-success pull-left" id="save" disabled="disabled" onClick="savePhoto()">Save picture</button>
-    </div>
-    <div class="row clearfix">
-      <div class="span12">
-        <button class="btn" id="moustache-0" onClick="changeMoustache(0)">Handlebars</button>
-        <button class="btn" id="moustache-1" onClick="changeMoustache(1)">Moustache 1</button>
-        <button class="btn" id="moustache-2" onClick="changeMoustache(2)">Moustache 2</button>
-        <button class="btn" id="moustache-3" onClick="changeMoustache(3)">Moustache 3</button>
-        <button class="btn" id="moustache-4" onClick="changeMoustache(4)">Moustache 4</button>
-        <button class="btn" id="moustache-5" onClick="changeMoustache(5)">Hitler</button>
-        <button class="btn btn-danger" id="no-moustache" onClick="changeMoustache(6)">Remove Tash</button>
-        <!-- <button class="btn bt" id="delete" disabled="disabled" onClick="deletePhoto()">Delete picture</button> -->
-      </div>
+  <div class="row photobooth" id="photobooth">
+    <div class="span12">
+      <canvas id="output" class="img-polaroid show"></canvas>
+      <canvas id="photo" class="img-polaroid hide" width></canvas>
     </div>
   </div>
   
+  <div class="row" id="controls">
+    <div class="span12">
+      <button class="btn btn-large btn-success show" id="take" onClick="takePhoto()">Take Photo</button>
+      <button class="btn btn-large btn-success show" id="save" disabled="disabled" onClick="savePhoto()">Save picture</button>
+      <button class="btn btn-large btn-success hide" id="another" onClick="takeAnother()">Save picture</button>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="span12">
+      <button class="btn" id="moustache-0" onClick="changeMoustache(0)">Moustache 1</button>
+      <button class="btn" id="moustache-1" onClick="changeMoustache(1)">Moustache 2</button>
+      <button class="btn" id="moustache-2" onClick="changeMoustache(2)">Moustache 3</button>
+      <button class="btn" id="moustache-3" onClick="changeMoustache(3)">Moustache 4</button>
+      <button class="btn" id="moustache-4" onClick="changeMoustache(4)">Moustache 5</button>
+      <button class="btn" id="moustache-5" onClick="changeMoustache(5)">Moustache 6</button>
+      <button class="btn" id="moustache-0" onClick="changeMoustache(6)">Moustache 7</button>
+      <button class="btn" id="moustache-1" onClick="changeMoustache(7)">Moustache 8</button>
+      <button class="btn" id="moustache-2" onClick="changeMoustache(8)">Moustache 9</button>
+      <button class="btn" id="moustache-3" onClick="changeMoustache(9)">Moustache 10</button>
+      <button class="btn" id="moustache-4" onClick="changeMoustache(10)">Moustache 11</button>
+      <button class="btn" id="moustache-5" onClick="changeMoustache(11)">Moustache 12</button>
+      <button class="btn" id="moustache-0" onClick="changeMoustache(12)">Moustache 13</button>
+      <button class="btn" id="moustache-1" onClick="changeMoustache(13)">Moustache 14</button>
+      <button class="btn" id="moustache-2" onClick="changeMoustache(14)">Moustache 15</button>
+      <button class="btn" id="moustache-3" onClick="changeMoustache(15)">Moustache 16</button>
+      <button class="btn" id="moustache-4" onClick="changeMoustache(16)">Moustache 17</button>
+      <button class="btn btn-danger" id="no-moustache" onClick="changeMoustache(17)">Remove Tash</button>
+      <!-- <button class="btn bt" id="delete" disabled="disabled" onClick="deletePhoto()">Delete picture</button> -->
+    </div>
+  </div>
+
+  
   <div class="row about" id="about">
     <div class="span4 offset1">
-      <h2>What the Duce‽</h2>
+      <h3>What the Duce‽</h3>
       <p class="lead">Are you a baby faced youth? A Lady? Lack the natural ability to grow a nose neighbout? Fear not, we're here to help.</p>
       <p>Using this clever little web application, you too can look as refined as our victorian ancestors. Simpily allow access to your web camera obscurea, and your image will be transferd to our digital mirror! Then simperly select the face furniture that best suits your face and take say cheese. You can they save the photograph to your personal computer, and upload it to the intertubes. Gadzooks! </p>
     </div>
     <div class="span4 offset2">
-      <h2>How it's Done</h2>
+      <h3>How it's Done</h3>
       <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
@@ -79,12 +84,12 @@
   
   <div class="row who" id="who">
     <div class="span4 offset1">
-      <h2>Who Made This?</h2>
+      <h3>Who Made This?</h3>
       <p class="lead">This here web application was put together by the turn of the century engineers at <a href="http://www.wearebeef.co.uk" title="Beef">Beef</a>.</p>
       <p></p>
     </div>
     <div class="span4 offset2">
-      <h2>Get in Touch</h2>
+      <h3>Get in Touch</h3>
       <p class="lead">Like what you see? We can build fun stuff like this for you too!</p>
       <p>Don't be afraid to send one of these new fangled e-mails, give us a bell on the Graham-Bell's telephone, or just pop in for High Tea (and biccies)</p>
       <div class="row-fluid">
@@ -109,14 +114,15 @@
   
   
 <div class="footer">
-  <p class="pull-left">©Beef 2012</p>
-  <a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" class="pull-right">Tweet</a>
-  <div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial" class="pull-right"></div>
+  <p>©Beef 2012</p>
 </div>
 
 
 </div> <!-- eo:container-fluid -->
   
+  
+  
+  <script src="/js/jquery-1.8.2.min.js"></script>
   <script src="/js/ccv.js"></script>
   <script src="/js/face.js"></script>
   <script src="/js/filesaver-min.js"></script>
@@ -229,7 +235,18 @@ moustache[2] = "2.png"
 moustache[3] = "3.png"
 moustache[4] = "4.png"
 moustache[5] = "5.png"
-moustache[6] = "no-tash.png"
+moustache[6] = "6.png"
+moustache[7] = "7.png"
+moustache[8] = "8.png"
+moustache[9] = "9.png"
+moustache[10] = "10.png"
+moustache[11] = "11.png"
+moustache[12] = "12.png"
+moustache[13] = "13.png"
+moustache[14] = "14.png"
+moustache[15] = "15.png"
+moustache[16] = "16.png"
+moustache[17] = "no-tash.png"
 
 App.glasses = new Image();
 App.glasses.src = "moustaches/" + moustache[0]
@@ -240,11 +257,34 @@ function changeMoustache(value) {
 
 var video = document.getElementById('output');
 var photo = document.getElementById('photo');
+
+var takeButton = document.getElementById('take');
+var saveButton = document.getElementById('save');
+var delButton = document.getElementById('delete');
+var anotherButton = document.getElementById('another');
 var context;
 
 
 
 function takePhoto() {
+  
+
+  photo.width = video.width;
+  photo.height = video.height;
+  
+  context = photo.getContext('2d');
+  context.drawImage(video, 0, 0, photo.width, photo.height);
+  
+
+  
+  saveButton.disabled = false;
+                                        
+  photo.setAttribute("class", "show");
+  video.setAttribute("class", "hide");
+  takeButton.setAttribute("class", "hide");                                
+}
+
+function savePhoto() {
   
   var timestamp = new Date();
   var dd = timestamp.getDate();
@@ -252,25 +292,17 @@ function takePhoto() {
   var hour = timestamp.getHours();
   var min = timestamp.getMinutes();
   
-  photo.width = video.width;
-  photo.height = video.height;
-  
-  context = photo.getContext('2d');
-  context.drawImage(video, 0, 0, photo.width, photo.height);
-  
-  var saveButton = document.getElementById('save');
-  var delButton = document.getElementById('delete');
-  saveButton.disabled = false;
-  delButton.disabled = false;
-}
-
-function savePhoto() {
   var yyyy = timestamp.getFullYear();
   if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} timestamp = mm+'-'+dd+'-'+yyyy+'_'+hour+'-'+min;
   
   photo.toBlob(function(blob) {
       saveAs(blob, "Photo_"+timestamp+".png");
   });
+}
+
+function takeAnother() {
+  
+
 }
 
 function deletePhoto() {

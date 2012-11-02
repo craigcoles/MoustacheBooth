@@ -1,6 +1,10 @@
 body{
-  background: #999;
   padding-top: 20px;
+}
+
+/*Container*/
+.container {
+  width: 960px;
 }
 
 /*Alert*/
@@ -9,20 +13,31 @@ body{
   width: 640px;
 }
 
-/*Masthead*/
-.masthead{
-  padding: 20px 0;
-}
-
 /*Canavses*/
 #output, #photo  {
   width: 640px;
   height: 480px;
   margin: 0 0 20px 0;
+  position: absolute;
+  top: 0;
+  left: 160px;
 }
+
+#photo.show, #output.show, .btn.show{display:block;}
+#photo.hide, #output.hide, .btn.hide{display:none;}
+
+
+#photobooth{
+  position: relative;
+  height: 510px;
+}
+
 
 .photobooth .row .span12{
   padding: 20px 0;
   text-align: center;
 }
 
+.photobooth .row .span12 .btn{
+  margin-bottom: 20px;
+}
