@@ -132,6 +132,12 @@ var anotherButton = document.getElementById('another');
 var context;
 
 
+function cameraFlash() {
+  var context = video.get(0).getContext("2d");
+  
+  setTimeout(function() {var date = new Date(); var time = date.getTime(); animate(time, myRectangle);}, 3000);
+}
+
 
 function takePhoto() {
   
