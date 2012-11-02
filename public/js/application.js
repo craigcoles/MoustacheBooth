@@ -116,7 +116,7 @@ moustache[16] = "16.png";
 moustache[17] = "no-tash.png";
 
 App.glasses = new Image();
-App.glasses.src = "moustaches/" + moustache[0]
+App.glasses.src = "moustaches/" + moustache[0];
 
 function changeMoustache(value) {
   App.glasses.src = "moustaches/" + moustache[value];
