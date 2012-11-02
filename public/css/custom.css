@@ -23,9 +23,8 @@ body{
   left: 160px;
 }
 
-#photo.show, #output.show, .btn.show{display:block;}
-#photo.hide, #output.hide, .btn.hide{display:none;}
-
+/*#photo, #save, #another{display:none;}
+*/
 
 #photobooth{
   position: relative;
