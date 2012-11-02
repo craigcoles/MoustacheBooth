@@ -264,18 +264,13 @@ var delButton = document.getElementById('delete');
 var anotherButton = document.getElementById('another');
 var context;
 
-
-
 function takePhoto() {
-  
 
   photo.width = video.width;
   photo.height = video.height;
   
   context = photo.getContext('2d');
   context.drawImage(video, 0, 0, photo.width, photo.height);
-  
-
   
   saveButton.disabled = false;
                                         
