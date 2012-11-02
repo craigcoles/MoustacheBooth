@@ -40,3 +40,27 @@ body{
   position: relative;
   height: 510px;
 }
+
+#flash{
+  display:block;
+  position:absolute;
+  top:5px;
+  left:165px;
+  background:#fff;
+  z-index:99;
+  width:640px;
+  height:480px;
+  opacity:0;
+  -webkit-transition:opacity 0.1s ease-in-out;  
+  -moz-transition:opacity 0.1s ease-in-out;  
+  -o-transition:opacity 0.1s ease-in-out;  
+  transition:opacity 0.1s ease-in-out;
+}
+
+#flash.active {
+  opacity:1;
+  -webkit-transition:opacity 0.1s ease-in-out;  
+  -moz-transition:opacity 0.1s ease-in-out;  
+  -o-transition:opacity 0.1s ease-in-out;  
+  transition:opacity 0.1s ease-in-out;
+}
