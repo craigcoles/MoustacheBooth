@@ -129,19 +129,11 @@ var takeButton = document.getElementById('take');
 var saveButton = document.getElementById('save');
 var delButton = document.getElementById('delete');
 var anotherButton = document.getElementById('another');
+var flash = document.getElementById('flash');
 var context;
-
-
-function cameraFlash() {
-  var context = video.get(0).getContext("2d");
-  
-  setTimeout(function() {var date = new Date(); var time = date.getTime(); animate(time, myRectangle);}, 3000);
-}
-
 
 function takePhoto() {
   
-
   photo.width = video.width;
   photo.height = video.height;
   
@@ -149,7 +141,10 @@ function takePhoto() {
   context.drawImage(video, 0, 0, photo.width, photo.height);
   
   saveButton.disabled = false;
-                                        
+  
+  flash.classList.add('active');
+  setTimeout(function(){flash.classList.remove('active');},100); 
+                                         
   photo.style.display = 'inline-block';
   video.style.display = 'none';
   takeButton.style.display = 'none';
