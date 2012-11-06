@@ -1,0 +1,66 @@
+body{
+  padding-top: 20px;
+}
+
+/*Container*/
+.container {
+  width: 960px;
+}
+
+/*Alert*/
+.alert {
+  margin: 20px auto;
+  width: 640px;
+}
+
+/*Controls*/
+#controls div{
+  text-align:center;
+  padding: 0 0 20px 0;
+}
+
+#controls div .btn{
+  display: inline-block;
+}
+
+/*Canavses*/
+#output, #photo  {
+  width: 640px;
+  height: 480px;
+  margin: 0 0 20px 0;
+  position: absolute;
+  top: 0;
+  left: 160px;
+}
+
+#photo, #controls div .btn#save, #controls div .btn#another{display:none;}
+
+
+#photobooth{
+  position: relative;
+  height: 510px;
+}
+
+#flash{
+  display:block;
+  position:absolute;
+  top:5px;
+  left:165px;
+  background:#fff;
+  z-index:99;
+  width:640px;
+  height:480px;
+  opacity:0;
+  -webkit-transition:opacity 0.1s ease-in-out;  
+  -moz-transition:opacity 0.1s ease-in-out;  
+  -o-transition:opacity 0.1s ease-in-out;  
+  transition:opacity 0.1s ease-in-out;
+}
+
+#flash.active {
+  opacity:1;
+  -webkit-transition:opacity 0.1s ease-in-out;  
+  -moz-transition:opacity 0.1s ease-in-out;  
+  -o-transition:opacity 0.1s ease-in-out;  
+  transition:opacity 0.1s ease-in-out;
+}
