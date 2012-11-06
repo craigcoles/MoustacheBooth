@@ -95,6 +95,7 @@ var App = {
 	}
 };
 
+// MOUSTACHE ARRAY
 var moustache = [];
 moustache[0] = "0.png";
 moustache[1] = "1.png";
@@ -122,15 +123,31 @@ function changeMoustache(value) {
   App.glasses.src = "moustaches/" + moustache[value];
 }
 
+//CANVAS TAGS
 var video = document.getElementById('output');
 var photo = document.getElementById('photo');
+var context;
 
+
+//HTML WRAPPERS
+var moustacheOptions = document.getElementById('options');
+
+//HTML BUTTONS
 var takeButton = document.getElementById('take');
 var saveButton = document.getElementById('save');
 var delButton = document.getElementById('delete');
 var anotherButton = document.getElementById('another');
+
+//DIV FOR FLASH EFFECT
 var flash = document.getElementById('flash');
-var context;
+
+//TIMESTAMP FOR SAVE
+var timestamp = new Date();
+var dd = timestamp.getDate();
+var mm = timestamp.getMonth()+1;
+var hour = timestamp.getHours();
+var min = timestamp.getMinutes();
+var yyyy = timestamp.getFullYear();
 
 function takePhoto() {
   
@@ -149,21 +166,13 @@ function takePhoto() {
   video.style.display = 'none';
   takeButton.style.display = 'none';
   saveButton.style.display = 'inline-block';
-  anotherButton.style.display = 'inline-block';                        
+  anotherButton.style.display = 'inline-block';
+  moustacheOptions.style.display = 'none';                      
                                 
 }
 
-function savePhoto() {
-  
-  var timestamp = new Date();
-  var dd = timestamp.getDate();
-  var mm = timestamp.getMonth()+1;
-  var hour = timestamp.getHours();
-  var min = timestamp.getMinutes();
-  
-  var yyyy = timestamp.getFullYear();
+function savePhoto() {  
   if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} timestamp = mm+'-'+dd+'-'+yyyy+'_'+hour+'-'+min;
-  
   photo.toBlob(function(blob) {
       saveAs(blob, "Photo_"+timestamp+".png");
   });
@@ -175,11 +184,13 @@ function takeAnother() {
   takeButton.style.display = 'inline-block';
   saveButton.style.display = 'none';
   anotherButton.style.display = 'none';
+  moustacheOptions.style.display = 'block';                      
 }
 
-function deletePhoto() {
-  context.clearRect(0, 0, photo.width, photo.height);
-}
+// REMOVED THE DELETE FUNCTION
+// function deletePhoto() {
+//   context.clearRect(0, 0, photo.width, photo.height);
+// }
 
 App.init = function() {
 	App.video = document.createElement('video');
