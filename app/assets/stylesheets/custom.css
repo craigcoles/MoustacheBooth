@@ -2,6 +2,15 @@ body{
   padding-top: 20px;
 }
 
+/*Hide*/
+.hide {
+  display:none;
+}
+
+.hide.counting {
+  display:block;
+}
+
 /*Container*/
 .container {
   width: 960px;
@@ -39,6 +48,45 @@ body{
 #photobooth{
   position: relative;
   height: 510px;
+}
+
+#countdown {
+  display:block;
+  position:absolute;
+  top:5px;
+  left:165px;
+  z-index:99;
+  width:640px;
+  height:480px;
+}
+
+#countdown ul {
+  width:640px;
+  height:480px;
+  position:relative;
+  background: none;
+  padding-left: 0;
+  margin-left: 0;
+  list-style-type: none;
+  list-style-position: outside;
+}
+
+#countdown ul li {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 160px;
+  height: 160px;
+  text-align:center;
+  margin-top: -80px; /* Half the height */
+  margin-left: -80px; /* Half the width */
+}
+
+#countdown ul li span {
+  font-size: 150px;
+  line-height: 160px;
+  color:#fff;
+  opacity:0.6;
 }
 
 #flash{
