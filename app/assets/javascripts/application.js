@@ -1,5 +1,7 @@
 //= require ccv
 //= require face
-//= require filesaver-min
+//= require blobbuilder.min
 //= require canvas-to-blob-min
+//= require filesaver-min
+
 //= require base

@@ -1,3 +1,4 @@
+/*Body*/
 body{
   padding-top: 20px;
 }
@@ -17,10 +18,7 @@ body{
 #controls div{
   text-align:center;
   padding: 0 0 20px 0;
-}
-
-#controls div .btn{
-  display: inline-block;
+  .btn{display: inline-block;}
 }
 
 /*Canavses*/
@@ -33,7 +31,7 @@ body{
   left: 160px;
 }
 
-#photo, #controls div .btn#save, #controls div .btn#another{display:none;}
+#photo, #controls div .btn#save,#controls div .btn#another{display:none;}
 
 
 #photobooth{
@@ -55,12 +53,11 @@ body{
   -moz-transition:opacity 0.1s ease-in-out;  
   -o-transition:opacity 0.1s ease-in-out;  
   transition:opacity 0.1s ease-in-out;
-}
-
-#flash.active {
-  opacity:1;
-  -webkit-transition:opacity 0.1s ease-in-out;  
-  -moz-transition:opacity 0.1s ease-in-out;  
-  -o-transition:opacity 0.1s ease-in-out;  
-  transition:opacity 0.1s ease-in-out;
+  &.active {
+    opacity:1;
+    -webkit-transition:opacity 0.1s ease-in-out;  
+    -moz-transition:opacity 0.1s ease-in-out;  
+    -o-transition:opacity 0.1s ease-in-out;  
+    transition:opacity 0.1s ease-in-out;
+  }
 }
