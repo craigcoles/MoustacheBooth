@@ -2,6 +2,8 @@
 
 ## Thanks to
 
+* [HTML5 Capturing Audio & Video](http://www.html5rocks.com/en/tutorials/getusermedia/intro/)
+* [getUserMedia](https://github.com/andismith/getUserMedia-examples)
 * [HTML5-Face-Detection](https://github.com/wesbos/HTML5-Face-Detection)
 * [Face-Detection](https://github.com/neave/face-detection)
 
