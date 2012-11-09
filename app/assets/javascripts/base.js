@@ -153,7 +153,7 @@ var timeInSecs;
 var ticker; 
 
 function startTimer(secs) { 
-  document.getElementById("countdownTime").classList.add('counting');
+  document.getElementById("countdownBlock").classList.add('counting');
   timeInSecs = parseInt(secs)-1; 
   ticker = setInterval("tick()",1000); // every second 
 } 
@@ -165,7 +165,7 @@ function tick() {
   } else { 
     clearInterval(ticker); 
     setTimeout(function() {
-      document.getElementById("countdownTime").classList.remove('counting');
+      document.getElementById("countdownBlock").classList.remove('counting');
       flash.classList.add('active');
       setTimeout(function(){flash.classList.remove('active');},100);
       document.getElementById("countdownTime").innerHTML = '3';

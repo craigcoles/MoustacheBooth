@@ -60,30 +60,25 @@ body{
   height:480px;
 }
 
-#countdown ul {
-  width:640px;
-  height:480px;
-  position:relative;
-  background: none;
-  padding-left: 0;
-  margin-left: 0;
-  list-style-type: none;
-  list-style-position: outside;
-}
-
-#countdown ul li {
+#countdown p {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 160px;
   height: 160px;
+  background:#000;
+  opacity:0.6;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
   text-align:center;
   margin-top: -80px; /* Half the height */
   margin-left: -80px; /* Half the width */
 }
 
-#countdown ul li span {
-  font-size: 150px;
+#countdown span {
+  font-size: 100px;
+  font-weight:bold;
   line-height: 160px;
   color:#fff;
   opacity:0.6;
