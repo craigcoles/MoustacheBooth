@@ -156,6 +156,9 @@ function takePhoto() {
   context = photo.getContext('2d');
   context.drawImage(video, 0, 0, photo.width, photo.height);
 
+  flash.classList.add('active');
+  setTimeout(function(){flash.classList.remove('active');},100);
+
   saveButton.disabled = false;
 
   photo.style.display = 'inline-block';
