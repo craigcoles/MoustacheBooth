@@ -149,26 +149,51 @@ var hour = timestamp.getHours();
 var min = timestamp.getMinutes();
 var yyyy = timestamp.getFullYear();
 
+var timeInSecs; 
+var ticker; 
+
+function startTimer(secs) { 
+  document.getElementById("countdownBlock").classList.add('counting');
+  timeInSecs = parseInt(secs)-1; 
+  ticker = setInterval("tick()",1000); // every second 
+} 
+
+function tick() { 
+  var secs = timeInSecs; 
+  if (secs>1) { 
+    timeInSecs--; 
+  } else { 
+    clearInterval(ticker); 
+    setTimeout(function() {
+      document.getElementById("countdownBlock").classList.remove('counting');
+      flash.classList.add('active');
+      setTimeout(function(){flash.classList.remove('active');},100);
+      document.getElementById("countdownTime").innerHTML = '3';
+    },100);
+  } 
+  document.getElementById("countdownTime").innerHTML = secs; 
+}
+
 function takePhoto() {
   
   photo.width = video.width;
   photo.height = video.height;
   
-  context = photo.getContext('2d');
-  context.drawImage(video, 0, 0, photo.width, photo.height);
+  startTimer(4);
   
-  saveButton.disabled = false;
-  
-  flash.classList.add('active');
-  setTimeout(function(){flash.classList.remove('active');},100); 
-                                         
-  photo.style.display = 'inline-block';
-  video.style.display = 'none';
-  takeButton.style.display = 'none';
-  saveButton.style.display = 'inline-block';
-  anotherButton.style.display = 'inline-block';
-  moustacheOptions.style.display = 'none';                      
-                                
+  setTimeout(function(){
+    context = photo.getContext('2d');
+    context.drawImage(video, 0, 0, photo.width, photo.height);
+
+    saveButton.disabled = false;
+
+    photo.style.display = 'inline-block';
+    video.style.display = 'none';
+    takeButton.style.display = 'none';
+    saveButton.style.display = 'inline-block';
+    anotherButton.style.display = 'inline-block';
+    moustacheOptions.style.display = 'none';
+  },4000); 
 }
 
 function savePhoto() {  

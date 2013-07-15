@@ -1,0 +1,21 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Liam Richardson -- Lead Web Developer, Beef -- @discoliam
+    Craig Coles -- Front End Develop, Beef -- @craigrcoles
+    Jordan Elver -- Developer, Beef -- @jordelver
+    Tom Burton -- Technical Director, Beef -- @tbertz
+    Richard Windsor -- Designer, Beef
+    
+
+# THANKS
+
+    Neave -- https://github.com/neave/face-detection
+    Wes Bos -- https://github.com/wesbos/HTML5-Face-Detection
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3, Canvas, CVV
+    Bootstrap
