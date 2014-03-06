@@ -40,104 +40,41 @@
         
 <div class="container">
   
-  <div class="navbar navbar-inverse">
-    <div class="navbar-inner">
-      <a class="brand" href="#">Moustache Booth</a>
-    </div>
-  </div>
-  
   <p id="info" class="alert alert-error">Please allow access to your camera!</p>
   
-  <div class="row-fluid photobooth" id="photobooth">
-    <div class="span12">
-      <div id="flash"></div>
-      <canvas id="output" class="img-polaroid show"></canvas>
-      <canvas id="photo" class="img-polaroid hide"></canvas>
-    </div>
-  </div>
-  
-  <div class="row-fluid" id="controls">
-    <div class="span12">
-      <button class="btn btn-large btn-success show" id="take" onClick="takePhoto()">Take Photo</button>
-      <button class="btn btn-large btn-success show" id="save" disabled="disabled" onClick="savePhoto()">Save picture</button>
-      <button class="btn btn-large btn-success hide" id="another" onClick="takeAnother()">Take Another</button>
-    </div>
-  </div>
-  
-  <div class="row-fluid" id="options">
-    <div class="span12">
-      <button class="btn" id="moustache-0" onClick="changeMoustache(0)">Moustache 1</button>
-      <button class="btn" id="moustache-1" onClick="changeMoustache(1)">Moustache 2</button>
-      <button class="btn" id="moustache-2" onClick="changeMoustache(2)">Moustache 3</button>
-      <button class="btn" id="moustache-3" onClick="changeMoustache(3)">Moustache 4</button>
-      <button class="btn" id="moustache-4" onClick="changeMoustache(4)">Moustache 5</button>
-      <button class="btn" id="moustache-5" onClick="changeMoustache(5)">Moustache 6</button>
-      <button class="btn" id="moustache-0" onClick="changeMoustache(6)">Moustache 7</button>
-      <button class="btn" id="moustache-1" onClick="changeMoustache(7)">Moustache 8</button>
-      <button class="btn" id="moustache-2" onClick="changeMoustache(8)">Moustache 9</button>
-      <button class="btn" id="moustache-3" onClick="changeMoustache(9)">Moustache 10</button>
-      <button class="btn" id="moustache-4" onClick="changeMoustache(10)">Moustache 11</button>
-      <button class="btn" id="moustache-5" onClick="changeMoustache(11)">Moustache 12</button>
-      <button class="btn" id="moustache-0" onClick="changeMoustache(12)">Moustache 13</button>
-      <button class="btn" id="moustache-1" onClick="changeMoustache(13)">Moustache 14</button>
-      <button class="btn" id="moustache-2" onClick="changeMoustache(14)">Moustache 15</button>
-      <button class="btn" id="moustache-3" onClick="changeMoustache(15)">Moustache 16</button>
-      <button class="btn" id="moustache-4" onClick="changeMoustache(16)">Moustache 17</button>
-      <button class="btn btn-danger" id="no-moustache" onClick="changeMoustache(17)">Remove Tash</button>
-    </div>
+  <div class="photo-booth">
+    <i id="flash"></i>
+    <canvas id="output" class="img-polaroid show"></canvas>
+    <canvas id="photo" class="img-polaroid hide"></canvas>
   </div>
 
+  <p>
+    <button class="btn btn-large btn-success show" id="take" onClick="takePhoto()">Take Photo</button>
+    <button class="btn btn-large btn-success show" id="save" disabled="disabled" onClick="savePhoto()">Save picture</button>
+    <button class="btn btn-large btn-success hide" id="another" onClick="takeAnother()">Take Another</button>
+  </p>
   
-  <div class="row-fluid about" id="about">
-    <div class="span6">
-      <h3>What the Duce‽</h3>
-      <p class="lead">Are you a baby faced youth? A Lady? Lack the natural ability to grow a nose neighbour? Fear not, we're here to help.</p>
-      <p>Using this clever little web application, you too can look as refined as our victorian ancestors. Simply allow access to your web camera obscura, and your image will be transferred to our digital mirror! Then simply select the face furniture that best suits your face and take say cheese. You can they save the photograph to your personal computer, and upload it to the intertubes. Gadzooks! </p>
-    </div>
-    <div class="span6">
-      <h3>How it's Done</h3>
-      <p class="lead">The 'MoustacheBooth' is Javascript + HTML5 application which uses facial recognition to give you some nice face furniture</p>
-      <p>The application makes uses of the two libraries. The first being CCV.js - which is a face detection library, this actually detects the face of the user. The second is face.js which holds the data for what faces look like. With these combined we use the getUserMedia API to access the webcam of the user and draw this onto a blank canvas using HTML5 and Javascript. Once the image has been drawn onto the canvas via the getUserMedia API, we can then use the libraries to detect if there is a face on the canvas image.</p>
-    </div>
-  </div>
-  
-  <div class="row-fluid who" id="who">
-    <div class="span6">
-      <h3>Who Made This?</h3>
-      <p class="lead">This here web application was put together by the turn of the century engineers at <a href="http://www.wearebeef.co.uk" title="Beef">Beef</a>.</p>
-      <p></p>
-    </div>
-    <div class="span6">
-      <h3>Get in Touch</h3>
-      <p class="lead">Like what you see? We can build fun stuff like this for you too!</p>
-      <p>Don't be afraid to send one of these new fangled e-mails, give us a bell on the Graham-Bell's telephone, or just pop in for High Tea (and biccies)</p>
-      <div class="row-fluid">
-        <div class="span6">
-          <address>
-            <strong>Beef</strong><br>
-            Unit 1.10<br>
-            Paintworks<br>
-            Bristol<br>
-            BS4 3EH<br>
-          </address>
-        </div>
-        <div class="span6">
-          <address>
-            <a href="mailto:#">hello@wearebeef.co.uk</a><br />
-            0117 971 1150
-          </address>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
-<div class="footer">
-  <p>©Beef 2012</p>
-</div>
+  <p>
+    <button class="btn" id="moustache-0" onClick="changeMoustache(0)">Moustache 1</button>
+    <button class="btn" id="moustache-1" onClick="changeMoustache(1)">Moustache 2</button>
+    <button class="btn" id="moustache-2" onClick="changeMoustache(2)">Moustache 3</button>
+    <button class="btn" id="moustache-3" onClick="changeMoustache(3)">Moustache 4</button>
+    <button class="btn" id="moustache-4" onClick="changeMoustache(4)">Moustache 5</button>
+    <button class="btn" id="moustache-5" onClick="changeMoustache(5)">Moustache 6</button>
+    <button class="btn" id="moustache-0" onClick="changeMoustache(6)">Moustache 7</button>
+    <button class="btn" id="moustache-1" onClick="changeMoustache(7)">Moustache 8</button>
+    <button class="btn" id="moustache-2" onClick="changeMoustache(8)">Moustache 9</button>
+    <button class="btn" id="moustache-3" onClick="changeMoustache(9)">Moustache 10</button>
+    <button class="btn" id="moustache-4" onClick="changeMoustache(10)">Moustache 11</button>
+    <button class="btn" id="moustache-5" onClick="changeMoustache(11)">Moustache 12</button>
+    <button class="btn" id="moustache-0" onClick="changeMoustache(12)">Moustache 13</button>
+    <button class="btn" id="moustache-1" onClick="changeMoustache(13)">Moustache 14</button>
+    <button class="btn" id="moustache-2" onClick="changeMoustache(14)">Moustache 15</button>
+    <button class="btn" id="moustache-3" onClick="changeMoustache(15)">Moustache 16</button>
+    <button class="btn" id="moustache-4" onClick="changeMoustache(16)">Moustache 17</button>
+    <button class="btn btn-danger" id="no-moustache" onClick="changeMoustache(17)">Remove Tash</button>
+  </p>
 
-
-</div> <!-- eo:container-fluid -->
   <script src="/assets/application.js"></script>    
   </body>
 </html>

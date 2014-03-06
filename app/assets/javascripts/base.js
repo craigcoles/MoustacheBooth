@@ -38,8 +38,8 @@ var App = {
 				App.context.translate(App.canvas.width, 0);
 				App.context.scale(-1, 1);
 			
-				var w = 300 / 4 * 0.8,
-					h = 270 / 4 * 0.8;
+				var w = 720 / 4 * 0.8,
+					h = 540 / 4 * 0.8;
 			
 				App.comp = [{
 					x: (App.video.videoWidth / 4 - w) / 2,
@@ -183,7 +183,7 @@ function takeAnother() {
   takeButton.style.display = 'inline-block';
   saveButton.style.display = 'none';
   anotherButton.style.display = 'none';
-  moustacheOptions.style.display = 'block';                 
+  moustacheOptions.style.display = 'block';
 }
 
 App.init = function() {
