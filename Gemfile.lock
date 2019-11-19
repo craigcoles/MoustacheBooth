@@ -6,7 +6,7 @@ GEM
     hike (1.2.3)
     kgio (2.7.4)
     multi_json (1.14.1)
-    rack (1.4.1)
+    rack (1.6.11)
     raindrops (0.10.0)
     sass (3.2.2)
     sprockets (2.12.5)
